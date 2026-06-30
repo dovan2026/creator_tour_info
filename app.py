@@ -311,9 +311,16 @@ section[data-testid="stSidebar"] div[data-baseweb="select"] > div {
     letter-spacing: 0.3px;
 }
 
-/* ── 사이드바 접기 버튼(keyboard_double) 숨김 ── */
-[data-testid="collapsedControl"] { display: none !important; }
-button[data-testid="baseButton-header"] { display: none !important; }
+/* ── 사이드바 접기/펼치기 버튼 완전 숨김 (모든 Streamlit 버전 대응) ── */
+[data-testid="collapsedControl"]           { display: none !important; }
+[data-testid="stSidebarCollapseButton"]    { display: none !important; }
+button[data-testid="baseButton-header"]    { display: none !important; }
+button[data-testid="baseButton-headerNoPadding"] { display: none !important; }
+section[data-testid="stSidebar"] > div > button  { display: none !important; }
+/* 아이콘 텍스트(keyboard_double_arrow_left)가 폰트 미로드로 노출되는 경우 */
+section[data-testid="stSidebar"] button span { display: none !important; }
+/* Streamlit Cloud 최신 빌드 대응 */
+div[data-testid="stSidebarHeader"] { display: none !important; }
 
 /* ── number input: 입력 텍스트 검정 ── */
 div[data-testid="stNumberInput"] input {
