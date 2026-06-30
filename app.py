@@ -340,57 +340,63 @@ section[data-testid="stSidebar"] .stTextInput input {
     border-radius: 10px !important;
 }
 
-/* ── Expander: 아이콘 텍스트 완전 은닉 ──
-   Streamlit expander 구조: <summary> 안 첫 번째 <span>이 아이콘(arrow_right/arrow_drop_down)
-   두 번째 <span>이 제목 텍스트.
-   data-testid="stExpanderToggleIcon" 또는 first-child 타겟팅 */
-span[data-testid="stExpanderToggleIcon"] {
-    font-size: 0 !important;
+/* ── Expander: 아이콘 및 화살표 완전 제거 ── */
+/* 모든 svg 및 ToggleIcon, 그리고 arrow 관련 텍스트가 표시될 수 있는 요소들을 숨깁니다. */
+[data-testid="stExpander"] svg,
+[data-testid="stExpander"] [data-testid="stExpanderToggleIcon"],
+[data-testid="stExpander"] .material-icons,
+[data-testid="stExpander"] .material-symbols-outlined,
+[data-testid="stExpander"] summary::marker,
+[data-testid="stExpander"] details::marker,
+[data-testid="stExpander"] summary::-webkit-details-marker {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
     width: 0 !important;
     height: 0 !important;
-    overflow: hidden !important;
-    color: transparent !important;
-    display: inline-block !important;
-}
-/* 모든 details summary 첫 번째 span (아이콘) 숨김 */
-details summary > span:first-child {
-    font-size: 0 !important;
-    width: 0 !important;
-    overflow: hidden !important;
-    color: transparent !important;
-}
-/* Material Icons / Symbols 클래스 직접 숨김 */
-.material-icons,
-.material-symbols-rounded,
-.material-symbols-outlined,
-.material-icons-round {
-    font-size: 0 !important;
-    color: transparent !important;
-    visibility: hidden !important;
-    width: 0 !important;
 }
 
-/* ── Expander: 배경색 (전체 배경보다 밝게) ── */
+/* ── Expander: 요소를 우측 정렬 및 디자인 변경 ── */
 [data-testid="stExpander"] {
     background: rgba(255,255,255,0.06) !important;
     border: 1px solid rgba(167,139,250,0.18) !important;
     border-radius: 14px !important;
     overflow: hidden;
 }
+
 [data-testid="stExpander"] summary {
+    display: flex !important;
+    flex-direction: row-reverse !important; /* 방향을 뒤집어 텍스트가 우측으로 가게 유도 */
+    justify-content: flex-start !important; /* flex-direction이 row-reverse이므로 우측 정렬 효과 */
+    align-items: center !important;
     background: rgba(167,139,250,0.10) !important;
     border-radius: 14px !important;
     padding: 12px 18px !important;
     color: #ffffff !important;
     font-weight: 700 !important;
     font-size: 1.3em !important;
+    text-align: right !important;
 }
-/* 제목 span도 동일하게 적용 */
-[data-testid="stExpander"] summary > span:last-child,
-[data-testid="stExpander"] summary p {
+
+/* Streamlit 내부 flex container 대응 */
+[data-testid="stExpander"] summary > div {
+    display: flex !important;
+    justify-content: flex-end !important; /* 우측 정렬 */
+    align-items: center !important;
+    width: 100% !important;
+    text-align: right !important;
+}
+
+/* 텍스트 색상 및 스타일 강제 적용 */
+[data-testid="stExpander"] summary p,
+[data-testid="stExpander"] summary span {
     color: #ffffff !important;
-    font-size: 1em !important;
+    font-size: 1.0em !important; /* 부모인 summary의 1.3em 배율을 그대로 유지 */
+    margin: 0 !important;
+    text-align: right !important;
+    width: 100% !important;
 }
+
 [data-testid="stExpander"] > div {
     background: rgba(255,255,255,0.04) !important;
 }
