@@ -340,19 +340,34 @@ section[data-testid="stSidebar"] .stTextInput input {
     border-radius: 10px !important;
 }
 
-/* ── Expander: arrow_down 아이콘 텍스트 숨김 (Material Icons 미로드 대응) ── */
-[data-testid="stExpander"] summary span[data-testid="stExpanderToggleIcon"],
-[data-testid="stExpander"] summary svg,
-[data-testid="stExpander"] details summary .st-emotion-cache-,
-details[data-testid="stExpander"] > summary > span:last-child,
-[data-testid="stExpander"] summary > div > p ~ span,
-/* 모든 Streamlit 버전 - expander 버튼 내 아이콘 span 숨김 */
-[data-testid="stExpander"] button span,
-[data-testid="stExpander"] summary span.st-emotion-cache-p5msec,
-/* 아이콘 텍스트가 직접 노출될 때 */
-[data-testid="stExpander"] summary span:not(:first-child) {
-    display: none !important;
+/* ── Expander: 아이콘 텍스트 완전 은닉 ──
+   Streamlit expander 구조: <summary> 안 첫 번째 <span>이 아이콘(arrow_right/arrow_drop_down)
+   두 번째 <span>이 제목 텍스트.
+   data-testid="stExpanderToggleIcon" 또는 first-child 타겟팅 */
+span[data-testid="stExpanderToggleIcon"] {
+    font-size: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    color: transparent !important;
+    display: inline-block !important;
+}
+/* 모든 details summary 첫 번째 span (아이콘) 숨김 */
+details summary > span:first-child {
+    font-size: 0 !important;
+    width: 0 !important;
+    overflow: hidden !important;
+    color: transparent !important;
+}
+/* Material Icons / Symbols 클래스 직접 숨김 */
+.material-icons,
+.material-symbols-rounded,
+.material-symbols-outlined,
+.material-icons-round {
+    font-size: 0 !important;
+    color: transparent !important;
     visibility: hidden !important;
+    width: 0 !important;
 }
 
 /* ── Expander: 배경색 (전체 배경보다 밝게) ── */
