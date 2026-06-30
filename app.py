@@ -339,6 +339,39 @@ section[data-testid="stSidebar"] .stTextInput input {
     color: #111 !important;
     border-radius: 10px !important;
 }
+
+/* ── Expander: arrow_down 아이콘 텍스트 숨김 (Material Icons 미로드 대응) ── */
+[data-testid="stExpander"] summary span[data-testid="stExpanderToggleIcon"],
+[data-testid="stExpander"] summary svg,
+[data-testid="stExpander"] details summary .st-emotion-cache-,
+details[data-testid="stExpander"] > summary > span:last-child,
+[data-testid="stExpander"] summary > div > p ~ span,
+/* 모든 Streamlit 버전 - expander 버튼 내 아이콘 span 숨김 */
+[data-testid="stExpander"] button span,
+[data-testid="stExpander"] summary span.st-emotion-cache-p5msec,
+/* 아이콘 텍스트가 직접 노출될 때 */
+[data-testid="stExpander"] summary span:not(:first-child) {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* ── Expander: 배경색 (전체 배경보다 밝게) ── */
+[data-testid="stExpander"] {
+    background: rgba(255,255,255,0.06) !important;
+    border: 1px solid rgba(167,139,250,0.18) !important;
+    border-radius: 14px !important;
+    overflow: hidden;
+}
+[data-testid="stExpander"] summary {
+    background: rgba(167,139,250,0.10) !important;
+    border-radius: 14px !important;
+    padding: 12px 18px !important;
+    color: #c4b5fd !important;
+    font-weight: 700 !important;
+}
+[data-testid="stExpander"] > div {
+    background: rgba(255,255,255,0.04) !important;
+}
 </style>
 """, unsafe_allow_html=True)
 
