@@ -381,8 +381,15 @@ details summary > span:first-child {
     background: rgba(167,139,250,0.10) !important;
     border-radius: 14px !important;
     padding: 12px 18px !important;
-    color: #c4b5fd !important;
+    color: #ffffff !important;
     font-weight: 700 !important;
+    font-size: 1.3em !important;
+}
+/* 제목 span도 동일하게 적용 */
+[data-testid="stExpander"] summary > span:last-child,
+[data-testid="stExpander"] summary p {
+    color: #ffffff !important;
+    font-size: 1em !important;
 }
 [data-testid="stExpander"] > div {
     background: rgba(255,255,255,0.04) !important;
