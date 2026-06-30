@@ -1,0 +1,18 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# 임시/개발용 스크립트
+validate_csv.py
+extract_pdf.py
+selenium_test.csv
+crawler_log.txt
+crawler_err.txt
+
+# 원본 CSV (v2로 대체됨 - 용량 절감)
+visitkorea_tour_data.csv
+
+# 기타 폴더
+lunch_recommender/
+oksusu_running/
